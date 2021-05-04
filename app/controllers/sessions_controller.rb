@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# This controller handles sessions (users sign-in).
+# It inherits from Devise's SessionsController.
 class SessionsController < Devise::SessionsController
   private
 

@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Application controller. All controllers will inherit from it.
 class ApplicationController < ActionController::API
   respond_to :json
 
