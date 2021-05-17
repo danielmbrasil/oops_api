@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   default_url_options host: 'localhost:3000'
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: %i[show]
+    scope 'users' do
+      resource :user, only: %i[show update]
+    end
   end
 
   devise_for :users,
