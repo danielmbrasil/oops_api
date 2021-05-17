@@ -9,6 +9,7 @@ describe RegistrationsController, type: :request do
     before do
       post signup_url, params: {
         user: {
+          name: user.name,
           email: user.email,
           password: user.password
         }
@@ -32,6 +33,7 @@ describe RegistrationsController, type: :request do
     before do
       post signup_url, params: {
         user: {
+          name: user.name,
           email: existing_user.email,
           password: existing_user.password
         }

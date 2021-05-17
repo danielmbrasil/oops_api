@@ -4,12 +4,14 @@ require 'factory_bot_rails'
 module UserHelpers
   def create_user
     FactoryBot.create(:user,
+                      name: Faker::Name.name,
                       email: Faker::Internet.email,
                       password: Faker::Internet.password)
   end
 
   def build_user
     FactoryBot.build(:user,
+                     name: Faker::Name.name,
                      email: Faker::Internet.email,
                      password: Faker::Internet.password)
   end
