@@ -42,6 +42,6 @@ module OopsApi
 
     I18n.default_locale = :pt
 
-    I18n.available_locales = :pt
+    I18n.available_locales = %i[en pt]
   end
 end
