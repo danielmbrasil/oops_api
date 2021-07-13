@@ -10,15 +10,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_183020) do
+ActiveRecord::Schema.define(version: 2021_06_30_161012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "activities", force: :cascade do |t|
+    t.string "title", limit: 80
+    t.text "body"
+    t.integer "xp"
+    t.bigint "level_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["level_id"], name: "index_activities_on_level_id"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_answers_on_quiz_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer "grade"
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_feedbacks_on_activity_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "expired_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.integer "level_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "title", limit: 80
+    t.integer "question_number"
+    t.integer "xp"
+    t.integer "question_type"
+    t.string "correct_answer"
+    t.string "option_a", limit: 80
+    t.string "option_b", limit: 80
+    t.string "option_c", limit: 80
+    t.string "option_d", limit: 80
+    t.bigint "quiz_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["quiz_id"], name: "index_questions_on_quiz_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.integer "quiz_number"
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_quizzes_on_activity_id"
+  end
+
+  create_table "statistics", force: :cascade do |t|
+    t.integer "xp"
+    t.integer "correct_answers"
+    t.integer "current_level"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_statistics_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +105,12 @@ ActiveRecord::Schema.define(version: 2021_05_03_183020) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "levels"
+  add_foreign_key "answers", "quizzes"
+  add_foreign_key "answers", "users"
+  add_foreign_key "feedbacks", "activities"
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "questions", "quizzes"
+  add_foreign_key "quizzes", "activities"
+  add_foreign_key "statistics", "users"
 end
