@@ -44,6 +44,8 @@ group :development, :test do
   gem 'faker'
 
   gem 'jsonapi-rspec'
+
+  gem 'i18n'
 end
 
 group :development do
