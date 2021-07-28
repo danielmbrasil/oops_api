@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_many :answers
 
   validates_presence_of :name
+  validates :name, format: { with: /\A[^0-9`!@#$%^&*+_=]+\z/ }
+
+  validates_format_of :password, with: /\A(?=.*[A-Z].*)(?=.*[0-9].*)(?=.*[a-z].*).{6,64}\z/,
+                                 if: :encrypted_password_changed?
 end

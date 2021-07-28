@@ -1,0 +1,18 @@
+# Portuguese translations
+
+pt:
+  activerecord:
+    models:
+      user: "Usuário"
+    attributes:
+      user:
+        name: "Nome"
+        password: "Senha"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              invalid: "inválido"
+            password:
+              invalid: "inválida"

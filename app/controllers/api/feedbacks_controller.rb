@@ -8,7 +8,11 @@ module Api
     before_action :find_feedback, only: :show
 
     def show
-      render json: { status: 'success', message: 'Resource loaded', data: @feedback }, status: 200
+      if !@feedback.nil?
+        render json: { status: 'success', message: 'Resource loaded', data: @feedback.slice('grade') }, status: 200
+      else
+        render json: { status: 'error', message: 'Resource not found', data: nil }, status: 404
+      end
     end
 
     def create
@@ -33,7 +37,7 @@ module Api
     end
 
     def find_feedback
-      @feedback = Feedback.where(user_id: current_user.id, activity_id: @activity.id).first.slice('grade')
+      @feedback = Feedback.where(user_id: current_user.id, activity_id: @activity.id).first
     end
   end
 end
