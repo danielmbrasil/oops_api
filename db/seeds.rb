@@ -3,91 +3,48 @@
 # Level 1
 l1 = Level.create(level_number: 1)
 
-a1 = Activity.create(title: 'Introdução 1', body: 'Nível um Introdução', xp: 50, level_id: l1.id)
+a1 = Activity.create(title: 'Classes', body: 'Uma classe é uma maneira de definir um tipo em uma
+                    linguagem orientada a objetos. Ela é composta do dados (atributos) e comportamentos
+                      (métodos).', xp: 90, level_id: l1.id)
 
 q1 = Quiz.create(quiz_number: 1, activity_id: a1.id)
 
-(0..5).each do |i|
-  if i.even?
-    Question.create(question_number: i + 1, title: 'Questão V ou F',question_type: 1, correct_answer: i.even? ? 'A' : 'B',
-                    option_a: 'Opção a', option_b: 'Opção b', xp: 10, quiz_id: q1.id)
-  else
-    Question.create(question_number: i + 1, title: 'Questão de múltipla escolha', question_type: 2, correct_answer: if i.even?
-                                                                                'A'
-                                                                              elsif i.multiple_of?(3)
-                                                                                'B'
-                                                                              else
-                                                                                i.multiple_of?(5) ? 'C' : 'D'
-                                                                              end, quiz_id: q1.id,
-                    option_a: 'Opção a', option_b: 'Opção b', option_c: 'Opção C', option_d: 'Opção D', xp: 10)
-  end
-end
+# Questões do nível 1
+Question.create(question_number: 1, title: 'Operador ponto é usado quando acessamos membros de uma classe por intermédio de um objeto.',
+                question_type: 1, correct_answer: 'A', option_a: 'Verdadeiro', option_b: 'Falso', xp: 5, quiz_id: q1.id)
 
-# Level 2
-l2 = Level.create(level_number: 2)
+Question.create(question_number: 2, title: '____________ é um modelo que define a forma de um objeto.', question_type: 2, 
+                correct_answer: 'B', quiz_id: q1.id, option_a: 'Método.', option_b: 'Classe.', option_c: 'Construtor.', option_d: 'Interface.', xp: 10)
 
-a2 = Activity.create(title: 'Introdução 2', body: 'Nível dois Introdução', xp: 60, level_id: l2.id)
+Question.create(question_number: 3, title: 'Uma classe é uma _________. Ao criar um objeto dessa classe passa a existir uma representação física dela na memória.', 
+                question_type: 2, correct_answer: 'C', quiz_id: q1.id, option_a: 'Concretização.', option_b: 'Representação.', 
+                option_c: 'Abstração.', option_d: 'Visualização.', xp: 10)
 
-q2 = Quiz.create(quiz_number: 2, activity_id: a2.id)
+Question.create(question_number: 4, title: 'Um objeto é uma ____________ de uma classe.', 
+                question_type: 2, correct_answer: 'B', quiz_id: q1.id, option_a: 'Referência.', option_b: 'Instância.', 
+                option_c: 'Informação.', option_d: 'Abstração.', xp: 10)
 
-(0..6).each do |i|
-  if i.even?
-    Question.create(question_number: i + 1, title: 'Questão V ou F', question_type: 1, correct_answer: i.even? ? 'A' : 'B',
-                    option_a: 'Opção a', option_b: 'Opção b', xp: 10, quiz_id: q2.id)
-  else
-    Question.create(question_number: i + 1, title: 'Questão de múltipla escolha', question_type: 2, correct_answer: if i.even?
-                                                                                'A'
-                                                                              elsif i.multiple_of?(3)
-                                                                                'B'
-                                                                              else
-                                                                                i.multiple_of?(5) ? 'C' : 'D'
-                                                                              end, quiz_id: q2.id,
-                    option_a: 'Opção a', option_b: 'Opção b', option_c: 'Opção C', option_d: 'Opção D', xp: 10)
-  end
-end
+Question.create(question_number: 5, title: 'Os dois elementos que uma classe contém são código e dados.',
+                question_type: 1, correct_answer: 'A', option_a: 'Verdadeiro', option_b: 'Falso', xp: 5, quiz_id: q1.id)
 
-# Level 3
-l3 = Level.create(level_number: 3)
+Question.create(question_number: 6, title: 'Os métodos e atributos de uma classe são chamados de ________ uma classe.', 
+                question_type: 2, correct_answer: 'A', quiz_id: q1.id, option_a: 'Membros.', option_b: 'Valores.', 
+                option_c: 'Objetos.', option_d: 'Corpos.', xp: 10)
 
-a3 = Activity.create(title: 'Introdução 3', body: 'Nível três Introdução', xp: 100, level_id: l3.id)
+Question.create(question_number: 7, title: 'Uma classe bem projetada deve agrupar informações logicamente ________.', 
+                question_type: 2, correct_answer: 'C', quiz_id: q1.id, option_a: 'Compactadas.', option_b: 'Armazenadas.', 
+                option_c: 'Conectadas.', option_d: 'Construídas.', xp: 10)
+              
+Question.create(question_number: 8, title: 'A _________ de informações não relacionadas na mesma classe desestruturá o código.', 
+                question_type: 2, correct_answer: 'B', quiz_id: q1.id, option_a: 'Modificação.', option_b: 'Inserção.', 
+                option_c: 'Alteração.', option_d: 'Exclusão.', xp: 10)
 
-q3 = Quiz.create(quiz_number: 3, activity_id: a3.id)
+Question.create(question_number: 9, title: 'Em uma operação de atribuição, variáveis de referência agem de modo igual à atribuição de variáveis de tipos  primitivos.',
+                  question_type: 1, correct_answer: 'B', option_a: 'Verdadeiro', option_b: 'Falso', xp: 5, quiz_id: q1.id)
 
-(0..10).each do |i|
-  if i.even?
-    Question.create(question_number: i + 1, title: 'Questão V ou F', question_type: 1, correct_answer: i.even? ? 'A' : 'B',
-                    option_a: 'Opção a', option_b: 'Opção b', xp: 10, quiz_id: q3.id)
-  else
-    Question.create(question_number: i + 1, title: 'Questão de múltipla escolha', question_type: 2, correct_answer: if i.even?
-                                                                                'A'
-                                                                              elsif i.multiple_of?(3)
-                                                                                'B'
-                                                                              else
-                                                                                i.multiple_of?(5) ? 'C' : 'D'
-                                                                              end, quiz_id: q3.id,
-                    option_a: 'Opção a', option_b: 'Opção b', option_c: 'Opção C', option_d: 'Opção D', xp: 10)
-  end
-end
+Question.create(question_number: 10, title: 'Um objeto possui suas próprias cópias de ________ definidas numa classe.', 
+                    question_type: 2, correct_answer: 'B', quiz_id: q1.id, option_a: 'Métodos.', option_b: 'Atributos.', 
+                    option_c: 'Construtores.', option_d: 'Visualizações.', xp: 10)
 
-# Level 4
-l4 = Level.create(level_number: 4)
-
-a4 = Activity.create(title: 'Introdução 4', body: 'Nível quatro Introdução', xp: 150, level_id: l4.id)
-
-q4 = Quiz.create(quiz_number: 4, activity_id: a4.id)
-
-(0..10).each do |i|
-  if i.even?
-    Question.create(question_number: i + 1, title: 'Questão V ou F', question_type: 1, correct_answer: i.even? ? 'A' : 'B',
-                    option_a: 'Opção a', option_b: 'Opção b', xp: 10, quiz_id: q4.id)
-  else
-    Question.create(question_number: i + 1, title: 'Questão de múltipla escolha', question_type: 2, correct_answer: if i.even?
-                                                                                'A'
-                                                                              elsif i.multiple_of?(3)
-                                                                                'B'
-                                                                              else
-                                                                                i.multiple_of?(5) ? 'C' : 'D'
-                                                                              end, quiz_id: q4.id,
-                    option_a: 'Opção a', option_b: 'Opção b', option_c: 'Opção C', option_d: 'Opção D', xp: 20)
-  end
-end
+Question.create(question_number: 11, title: 'Quando uma variável de referência é atribuída a outra variável de referência, as duas variáveis referenciam o mesmo objeto. Não é feita uma cópia do objeto.',
+                      question_type: 1, correct_answer: 'A', option_a: 'Verdadeiro', option_b: 'Falso', xp: 5, quiz_id: q1.id)
