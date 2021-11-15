@@ -3,7 +3,7 @@
 class AddActivitiesTable < ActiveRecord::Migration[6.1]
   def change
     create_table :activities do |t|
-      t.string :title, limit: 80
+      t.string :title, limit: 512
       t.text :body
       t.integer :xp
 
