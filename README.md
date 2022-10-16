@@ -1,24 +1,3 @@
-# README
+# Oops!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Oops! is a gamified app to learn some topics about Object-Oriented Programming. It consists of a quiz containing basic questions about OOP. This repository contains the application back-end which is a RESTful API written using Ruby on Rails. The Flutter front-end can be found at [https://github.com/danielmbrasil/oops](https://github.com/danielmbrasil/oops).
